@@ -13,5 +13,9 @@ public class Whales extends Family {
         return family;
     }
 
+    public Card getCard(int index) {
+        return family.get(index);
+    }
+
 
 }

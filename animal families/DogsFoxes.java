@@ -13,5 +13,9 @@ public class DogsFoxes extends Family {
         return family;
     }
 
+    public Card getCard(int index) {
+        return family.get(index);
+    }
+
 
 }
