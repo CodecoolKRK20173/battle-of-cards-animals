@@ -1,30 +1,19 @@
-
-
 public abstract class Player {
 
     private String name;
-    private int numberOfCards;
-    
+    private Hand hand;
 
-    public Player(String name, int numberOfCards) {
+    public Player(String name) {
         this.name = name;
-        this.numberOfCards = numberOfCards;
+        this.hand = new Hand();
     }
 
+    public abstract getHand();
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 
-    
-    public int getNumberOfCards() {
-        return numberOfCards;
-    }
-
-
-    public abstract void makeMove();
+    public abstract Card void makeMove();
 
     public abstract int chooseStatisticToCompare();
-
 
 }

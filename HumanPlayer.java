@@ -7,21 +7,22 @@ public class HumanPlayer extends Player {
     Scanner scanner = new Scanner(System.in);
     Display display = new Display();
 
-    public HumanPlayer(String name, int numberOfCards) {
-        super(name, numberOfCards);
+    public HumanPlayer(String name) {
+        super(name);
     }
 
+    public getHand() {
+        return hand;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public abstract Card void makeMove() {
+        return hand.getCards().getCard(0);
+    }
     
-
-
-    @Override
-    public void makeMove() {
-
-    }
-
-
-    @Override
     public int chooseStatisticToCompare() {
 
         System.out.print("Choose statistic to compare: ");
