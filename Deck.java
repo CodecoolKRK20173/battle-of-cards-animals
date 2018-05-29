@@ -11,7 +11,7 @@ public class Deck {
     private String[] names = new String[32];
 
     public Deck() {
-        getCardsFromFile("Cards.csv");
+        getCardsFromFile("CardSpecyfications.csv");
     }
 
     public void getCardsFromFile(String fileName) {
