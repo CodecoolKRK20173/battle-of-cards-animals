@@ -1,12 +1,17 @@
+import java.util.*;
 public class Table {
 
     private Deck deck = new Deck();
     private ArrayList<Card> cards;
-    private ArrayList<Player> palyers;
+    private ArrayList<Player> players;
 
     public Table() {
         players = new ArrayList<Player>();
-        cards = deck.getCards();
+        cards = deck.getAllCards();
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 
     public void addPlayer(Player player) {
@@ -14,20 +19,13 @@ public class Table {
     }
 
     public void dealCards() {
-        cards.mixCards();
+        deck.mixCards();
+        Iterator iter = new PlayerIterator(players);
         int i = 0;
-        while(cards.size()>0) {
-            for(Player player : players) {
-                player.getCards.addCardToHand(cards.get(i));
-                i++;
-            }
+        while(i < cards.size()) {
+            Player player = (Player) iter.next();
+            player.getHand().addCardToHand(cards.get(i));
+            i++;
         }
-
-        Iterator iterator = cards.iterator();
-            while(iterator.hasNext()) {
-                Card card = iterator.next();
-            }
-        }
-
     }
 }

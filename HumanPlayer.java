@@ -1,7 +1,4 @@
-import java.util.Scanner;
-
-
-
+import java.util.*;
 public class HumanPlayer extends Player {
 
     Scanner scanner = new Scanner(System.in);
@@ -11,35 +8,30 @@ public class HumanPlayer extends Player {
         super(name);
     }
 
-    public getHand() {
-        return hand;
-    }
+    // public abstract Card makeMove() {
+    //     return hand.getCards().getCard(0);
+    // }
 
-    public String getName() {
-        return name;
-    }
+    // public int chooseStatisticToCompare() {
+    //
+    //     System.out.print("Choose statistic to compare: ");
+    //     display.displayCardStatistic();
+    //     int choice = scanner.nextInt();
+    //     switch(choice) {
+    //         case 1:
+    //             break;
+    //         case 2:
+    //             break;
+    //         case 3:
+    //             break;
+    //         case 4:
+    //             break;
+    //         case 5:
+    //             break;
+    //     }
+    // }
 
-    public abstract Card void makeMove() {
-        return hand.getCards().getCard(0);
+    public String makeMove() {
+        return "";
     }
-    
-    public int chooseStatisticToCompare() {
-
-        System.out.print("Choose statistic to compare: ");
-        display.displayCardStatistic();
-        int choice = scanner.nextInt();
-        switch(choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-        }
-    }
-
 }
