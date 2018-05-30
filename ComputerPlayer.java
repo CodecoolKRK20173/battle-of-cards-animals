@@ -6,12 +6,18 @@ public class ComputerPlayer extends Player {
     //     super(name, hand);
     // }
 
+    public ComputerPlayer(String name) {
+        super(name);
+    }
+
 
     public ComputerPlayer(String name) {
         super(name);
     }
 
-    public String makeMove() {
-        return "";
+
+    @Override
+    public int chooseStatisticToCompare() {
+        return 100000;
     }
 }

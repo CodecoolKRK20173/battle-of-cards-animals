@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+
+
 public abstract class Player {
 
     private String name;
@@ -11,10 +13,10 @@ public abstract class Player {
         this.roundWinner = false;
     }
 
-    // public Player(String name, Hand hand) {
-    //     this.name = name;
-    //     this.hand = hand;
-    // }
+    public Player(String name) {
+        this.name = name;
+    }
+
 
 
 
