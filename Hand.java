@@ -1,3 +1,4 @@
+import java.util.*;
 public class Hand {
     private ArrayList<Card> holdedCards;
 
@@ -27,7 +28,4 @@ public class Hand {
         }
         return false;
     }
-
-
-
 }

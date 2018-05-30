@@ -15,7 +15,7 @@ public class ComputerHard extends ComputerPlayer {
 
     @Override
     public void makeMove() {
-        
+
     }
 
 

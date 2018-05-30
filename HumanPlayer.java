@@ -1,7 +1,4 @@
-import java.util.Scanner;
-
-
-
+import java.util.*;
 public class HumanPlayer extends Player {
 
     Scanner scanner = new Scanner(System.in);
@@ -18,7 +15,7 @@ public class HumanPlayer extends Player {
 
     @Override
     public void makeMove() {
-        
+
     }
 
 
@@ -46,5 +43,4 @@ public class HumanPlayer extends Player {
                 break;
         }
     }
-
 }

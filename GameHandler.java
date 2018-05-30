@@ -44,7 +44,7 @@ public class GameHandler {
         }
     }
 
-    
+
 
     public void startGame() {
         display.displayGameMode();
@@ -86,8 +86,8 @@ public class GameHandler {
 
     // }
 
-     
-    
+
+
     public int getIndexOfMaxiumumElement() {
         Collections.max(table.listOfCards);
     }
@@ -126,7 +126,7 @@ public class GameHandler {
             listOfStatistic.add(listOfCards.get(i).getLifeSpan());
         }
     }
-    
+
 
     public void addCardsToPlayersDeck() {
         player = getRoundWinnerIndex();
@@ -209,7 +209,7 @@ public class GameHandler {
         return isOver;
     }
 
-    
+
 
     private int getChoice() {
         boolean stopWhile = true;
@@ -234,6 +234,6 @@ public class GameHandler {
 
 
 
-    
+
 
 }

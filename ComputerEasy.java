@@ -15,7 +15,7 @@ public class ComputerEasy extends ComputerPlayer {
 
     @Override
     public void makeMove() {
-        
+
     }
 
 

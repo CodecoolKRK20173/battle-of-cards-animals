@@ -4,12 +4,13 @@ import java.util.ArrayList;
 public abstract class Player {
 
     private String name;
-    private int numberOfCards;
-    
+    private Hand hand;
+    private boolean roundWinner;
 
-    public Player(String name, int numberOfCards) {
+    public Player(String name) {
         this.name = name;
-        this.numberOfCards = numberOfCards;
+        this.hand = new Hand();
+        this.roundWinner = false;
     }
 
     public Player(String name) {
@@ -17,19 +18,18 @@ public abstract class Player {
     }
 
 
+
+
+    public Hand getHand() {
+        return hand;
+    }
+
     public String getName() {
         return name;
     }
 
-    
-    public int getNumberOfCards() {
-        return numberOfCards;
-    }
+    public abstract String makeMove();
 
-
-    public abstract void makeMove();
-
-    public abstract int chooseStatisticToCompare();
-
+    // public abstract int chooseStatisticToCompare();
 
 }
