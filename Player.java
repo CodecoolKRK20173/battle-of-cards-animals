@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 
 public abstract class Player {
@@ -9,6 +10,10 @@ public abstract class Player {
     public Player(String name, int numberOfCards) {
         this.name = name;
         this.numberOfCards = numberOfCards;
+    }
+
+    public Player(String name) {
+        this.name = name;
     }
 
 
