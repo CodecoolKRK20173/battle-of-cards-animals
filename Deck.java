@@ -3,12 +3,12 @@ import java.io.*;
 
 public class Deck {
     private ArrayList<Card> cards = new ArrayList<>();
-    private double[] speeds = new double[32];
-    private double[] lengths = new double[32];
-    private double[] weights = new double[32];
-    private double[] foods = new double[32];
-    private double[] lifeSpans = new double[32];
-    private String[] names = new String[32];
+    private ArrayList<double> speeds = new ArrayList<>();
+    private ArrayList<double> lengths = new ArrayList<>();
+    private ArrayList<double> weights = new ArrayList<>();
+    private ArrayList<double> foods = new ArrayList<>();
+    private ArrayList<double> lifeSpans = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
 
     public Deck() {
         getCardsFromFile("CardSpecyfications.csv");
@@ -43,42 +43,13 @@ public class Deck {
         return cards;
     }
 
-    // public double compareTo(Card compareCard) {
-    //
-	// 	double compareValue = ((Card) compareCard).getValue();
-    //
-	// 	//ascending order
-	// 	return this.value - compareValue;
-    //
-	// 	//descending order
-	// 	//return compareQuantity - this.quantity;
-    //
-	// }
-    //
-	// public static Comparator<Card> FruitNameComparator = new Comparator<Card>() {
-    //
-	//     public int compare(Card fruit1, Card fruit2) {
-    //
-	//       String fruitName1 = fruit1.getFruitName().toUpperCase();
-	//       String fruitName2 = fruit2.getFruitName().toUpperCase();
-    //
-	//       //ascending order
-	//       return fruitName1.compareTo(fruitName2);
-    //
-	//       //descending order
-	//       //return fruitName2.compareTo(fruitName1);
-	//     }
-    // }
-
     public void getSpecifications() {
-        int i = 0;
         for (Card card : cards) {
-            speeds[i] = card.getTopSpeed();
-            lengths[i] = card.getMaxLength();
-            weights[i] = card.getMaxWeight();
-            foods[i] = card.getFood();
-            lifeSpans[i] = card.getLifeSpan();
-            i++;
+            speeds.add(card.getTopSpeed());
+            lengths.add(card.getMaxLength());
+            weights.add(card.getMaxWeight());
+            foods.add(card.getFood());
+            lifeSpans.add(card.getLifeSpan());
         }
     }
 
@@ -90,9 +61,5 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
-    // public void dealCards(ArrayList<Player> players) {
-    //     for (Player player : players) {
-    //
-    //     }
-    // }
+
 }
