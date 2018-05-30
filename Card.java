@@ -1,13 +1,14 @@
+import java.util.*;
 public class Card {
 
     private String name;
-    private int topSpeed;
-    private float maxLength;
-    private int maxWeight;
-    private float food;
-    private int lifeSpan;
+    private double topSpeed;
+    private double maxLength;
+    private double maxWeight;
+    private double food;
+    private double lifeSpan;
 
-    public Card(String name, int topSpeed, int maxLength, int maxWeight, float food, int lifeSpan) {
+    public Card(String name, double topSpeed, double maxLength, double maxWeight, double food, double lifeSpan) {
         this.name = name;
         this.topSpeed = topSpeed;
         this.maxLength = maxLength;
@@ -16,26 +17,27 @@ public class Card {
         this.lifeSpan = lifeSpan;
     }
 
-    public getName() {
+    public String getName() {
         return name;
     }
-    public getTopSpeed() {
+    public double getTopSpeed() {
         return topSpeed;
     }
 
-    public getMaxLength() {
+    public double getMaxLength() {
         return maxLength;
     }
 
-    public getMaxWeight() {
+    public double getMaxWeight() {
         return maxWeight;
     }
 
-    public getFood() {
+    public double getFood() {
         return food;
     }
 
-    public getLifeSpan() {
+    public double getLifeSpan() {
+
         return lifeSpan;
     }
 }
