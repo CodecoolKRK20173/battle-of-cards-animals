@@ -8,6 +8,11 @@ public class ComputerEasy extends ComputerPlayer {
     }
 
 
+    public ComputerEasy(String name) {
+        super(name);
+    }
+
+
     @Override
     public void makeMove() {
         
