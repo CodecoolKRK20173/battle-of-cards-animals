@@ -11,32 +11,38 @@ public class HumanPlayer extends Player {
         super(name, numberOfCards);
     }
 
-
-    
-
-
-    @Override
-    public void makeMove() {
-
+    public HumanPlayer(String name) {
+        super(name);
     }
 
 
     @Override
-    public int chooseStatisticToCompare() {
+    public void makeMove() {
+        
+    }
 
+
+    @Override
+    public void chooseStatisticToCompare() {
+        int cardStatisticIndex = 0;
         System.out.print("Choose statistic to compare: ");
         display.displayCardStatistic();
         int choice = scanner.nextInt();
         switch(choice) {
             case 1:
+                compareTopSpeed();
                 break;
             case 2:
+                compareMaxLength();
                 break;
             case 3:
+                compareMaxWeigth();
                 break;
             case 4:
+                compareFood();
                 break;
             case 5:
+                compareLifeSpan();
                 break;
         }
     }
