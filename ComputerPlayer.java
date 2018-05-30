@@ -7,6 +7,10 @@ public class ComputerPlayer extends Player {
         super(name, numberOfCards);
     }
 
+    public ComputerPlayer(String name) {
+        super(name);
+    }
+
 
     @Override
     public void makeMove() {
@@ -16,7 +20,7 @@ public class ComputerPlayer extends Player {
 
     @Override
     public int chooseStatisticToCompare() {
-
+        return 100000;
     }
 
 
