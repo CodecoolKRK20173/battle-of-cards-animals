@@ -5,19 +5,17 @@ public abstract class Player {
 
     private String name;
     private Hand hand;
-    private boolean roundWinner;
+    private boolean isRoundWinner;
 
     public Player(String name) {
         this.name = name;
         this.hand = new Hand();
-        this.roundWinner = false;
+        this.isRoundWinner = false;
     }
 
-
-    public boolean getRoundWinner() {
-        return roundWinner;
+    public boolean isRoundWinner() {
+        return isRoundWinner;
     }
-
 
     public Hand getHand() {
         return hand;
@@ -27,16 +25,13 @@ public abstract class Player {
         return name;
     }
 
-
     public void setRoundWinner() {
-        roundWinner = true;
+        isRoundWinner = true;
     }
-
 
     public void setRoundLooser() {
-        roundWinner = false;
+        isRoundWinner = false;
     }
-
 
     public abstract int makeMove();
 

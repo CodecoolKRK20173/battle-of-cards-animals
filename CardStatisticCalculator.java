@@ -1,9 +1,9 @@
 
-
-public class CardStatisticCalculator {
-
-    Table table = new Table();
-
-
-
-}
+//
+// public class CardStatisticCalculator {
+//
+//     Table table = new Table();
+//
+//
+//
+// }

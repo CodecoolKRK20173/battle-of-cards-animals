@@ -47,7 +47,7 @@ public class Deck {
         for (Card card : cards) {
             speeds.add(card.getTopSpeed());
             lengths.add(card.getMaxLength());
-            weights.add(card.getMaxWeigth());
+            weights.add(card.getMaxWeight());
             foods.add(card.getFood());
             lifeSpans.add(card.getLifeSpan());
         }

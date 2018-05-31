@@ -1,6 +1,6 @@
 import java.util.*;
 public enum GameMode {
-    SMALL(1,"Two players"), MEDIUM(2,"Three players"), LARGE(3,"Four players");
+    PLAYER_PLAYER(1,"Player vs Player"), PLAYER_COMPUTER(2,"Player vs Computer"), COMPUTER_COMPUTER(3,"Computer vs Computer");
 
     int number;
     String descr;
@@ -11,30 +11,6 @@ public enum GameMode {
     }
 
     public String toString() {
-        return number + ") " + descr;
-    }
-
-    public void loadGame() {
-        if (this==SMALL) {
-            //
-        }
-        else if (this==MEDIUM) {
-            //
-        }
-        else if (this==LARGE) {
-            //
-        }
-    }
-
-    public static void main(String[] args) {
-        String input = "1";
-        int ordinal = Integer.parseInt(input) - 1;
-        GameMode[] values = GameMode.values();
-        GameMode scale = values[ordinal];
-
-        for(GameMode sc : values) {
-            System.out.println(sc);
-        }
-        scale.loadGame();
+        return number + ". " + descr;
     }
 }

@@ -30,7 +30,7 @@ public class Card {
         return maxLength;
     }
 
-    public double getMaxWeigth() {
+    public double getMaxWeight() {
         return maxWeight;
     }
 
