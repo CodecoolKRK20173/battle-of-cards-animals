@@ -23,7 +23,7 @@ public class Hand {
     }
 
     public boolean hasCard() {
-        if(holdedCards.size()>0) {
+        if(holdedCards.size() > 0) {
             return true;
         }
         return false;

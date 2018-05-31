@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 
 
 public class Display {
+
+    private String fileName;
 
 
     public void displayMainMenu() {
@@ -31,56 +36,28 @@ public class Display {
     }
 
 
-    public void displayAboutGame() {
+    public void displayAboutGame(String fileName) {
 
-
-
+        try {
+            Scanner sc = new Scanner(Paths.get(fileName));
+            
+            while(sc.hasNext()) {
+                String[] columns = sc.nextLine().split(" ");
+                System.out.println(Arrays.toString(columns)); 
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public void displayCardStatistic() {
         System.out.println("1. Top speed.\n" + 
                             "2. Max length.\n" + 
-                            "3. Max weigth.\n" +
+                            "3. Max weight.\n" +
                             "4. Food.\n" + 
                             "5. Life span.");                  
     }
-
-
-    // public void getShapesTable() {
-    //     leftAlignFormat = "| %-4d | %-15s | %-15f | %-15f |%n";
-        
-    //     System.out.format("+------+------------------+-------------+--------+%n");
-    //     System.out.format("|  ID  |     toString     |  Perimeter  |  Area  |%n");
-    //     System.out.format("+------+------------------+-------------+--------+%n");
-    //     for(int i = 0; i < shapeList.size(); i++) {
-    //         System.out.format(leftAlignFormat, i + 
-                                
-    //                             shapeList.get(i).toString() + 
-    //                             shapeList.get(i).calculatePerimeter() + 
-                                 
-    //                             shapeList.get(i).calculateArea());
-                                
-    //         System.out.format("+------+------------------+-------------+--------+%n");
-    //     }
-    //     System.out.format("+------+------------------+-------------+--------+%n");
-
-
-
-    //     System.out.format("|--------------|");
-    //     System.out.format("|--------------|");
-    //     System.out.format("|--------------|");
-    //     System.out.format("|--------------|");
-    //     System.out.format("|--------------|");
-    //     System.out.format("|-------+------|");
-    //     System.out.format("|       |      |");
-    //     System.out.format("|       |      |");
-    //     System.out.format("|       |      |");
-    //     System.out.format("|       |      |");
-    //     System.out.format("|       |      |");
-    //     System.out.format("|-------+------|");
-
-    // }
-
 
 }
