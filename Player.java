@@ -13,11 +13,10 @@ public abstract class Player {
         this.roundWinner = false;
     }
 
-    public Player(String name) {
-        this.name = name;
+
+    public boolean getRoundWinner() {
+        return roundWinner;
     }
-
-
 
 
     public Hand getHand() {
@@ -28,8 +27,18 @@ public abstract class Player {
         return name;
     }
 
-    public abstract String makeMove();
 
-    // public abstract int chooseStatisticToCompare();
+    public void setRoundWinner() {
+        roundWinner = true;
+    }
+
+
+    public void setRoundLooser() {
+        roundWinner = false;
+    }
+
+
+    public abstract int makeMove();
+
 
 }

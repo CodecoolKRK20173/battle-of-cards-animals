@@ -6,3 +6,11 @@ GameHandler.class
 HumanPlayer.class
 Main.class
 Player.class
+Card.class
+CardStatisticCalculator.class
+Deck.class
+GameMode.class
+Hand.class
+Iterator.class
+PlayerIterator.class
+Table.class

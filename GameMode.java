@@ -5,7 +5,7 @@ public enum GameMode {
     int number;
     String descr;
 
-    private GameScale(int number, String descr) {
+    private GameMode(int number, String descr) {
         this.number = number;
         this.descr = descr;
     }
@@ -29,10 +29,10 @@ public enum GameMode {
     public static void main(String[] args) {
         String input = "1";
         int ordinal = Integer.parseInt(input) - 1;
-        GameScale[] values = GameScale.values();
-        GameScale scale = values[ordinal];
+        GameMode[] values = GameMode.values();
+        GameMode scale = values[ordinal];
 
-        for(GameScale sc : values) {
+        for(GameMode sc : values) {
             System.out.println(sc);
         }
         scale.loadGame();

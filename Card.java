@@ -28,7 +28,7 @@ public class Card {
         return maxLength;
     }
 
-    public double getMaxWeight() {
+    public double getMaxWeigth() {
         return maxWeight;
     }
 

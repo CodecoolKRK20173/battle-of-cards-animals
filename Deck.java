@@ -3,11 +3,11 @@ import java.io.*;
 
 public class Deck {
     private ArrayList<Card> cards = new ArrayList<>();
-    private ArrayList<double> speeds = new ArrayList<>();
-    private ArrayList<double> lengths = new ArrayList<>();
-    private ArrayList<double> weights = new ArrayList<>();
-    private ArrayList<double> foods = new ArrayList<>();
-    private ArrayList<double> lifeSpans = new ArrayList<>();
+    private ArrayList<Double> speeds = new ArrayList<>();
+    private ArrayList<Double> lengths = new ArrayList<>();
+    private ArrayList<Double> weights = new ArrayList<>();
+    private ArrayList<Double> foods = new ArrayList<>();
+    private ArrayList<Double> lifeSpans = new ArrayList<>();
     private ArrayList<String> names = new ArrayList<>();
 
     public Deck() {
@@ -47,7 +47,7 @@ public class Deck {
         for (Card card : cards) {
             speeds.add(card.getTopSpeed());
             lengths.add(card.getMaxLength());
-            weights.add(card.getMaxWeight());
+            weights.add(card.getMaxWeigth());
             foods.add(card.getFood());
             lifeSpans.add(card.getLifeSpan());
         }
