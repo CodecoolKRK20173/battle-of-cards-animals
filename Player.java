@@ -13,10 +13,6 @@ public abstract class Player {
         this.roundWinner = false;
     }
 
-    public Player(String name) {
-        this.name = name;
-    }
-
 
 
 

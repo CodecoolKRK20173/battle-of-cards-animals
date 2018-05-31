@@ -9,18 +9,19 @@ public class Table {
 
 
     public Table() {
+        cards = deck.getAllCards();
         players = new ArrayList<Player>();
+        cardsPutted = new ArrayList<Card>();
+        this.cardWidth = 29;
         players.add(new HumanPlayer("Ewelina"));
         players.add(new HumanPlayer("Damian"));
         players.add(new HumanPlayer("Bartek"));
         players.add(new HumanPlayer("Sebastian"));
-        cards = deck.getAllCards();
-        cardsPutted = new ArrayList<Card>();
         cardsPutted.add(cards.get(0));
         cardsPutted.add(cards.get(1));
         cardsPutted.add(cards.get(2));
         cardsPutted.add(cards.get(3));
-        this.cardWidth = 22;
+
     }
 
     public ArrayList<Player> getPlayers() {
@@ -46,7 +47,6 @@ public class Table {
         String frame = "|";
         String line = "-";
         String space = " ";
-        String doubleSpace = "  ";
         StringBuilder strBuilder = new StringBuilder();
         List<ArrayList<String>> lists = new ArrayList<ArrayList<String>>();
         for(int i=1; i<=11; i++) {
@@ -60,15 +60,15 @@ public class Table {
             lists.get(2).add(space+center(repeat(line))+space);
             lists.get(3).add(frame+center(card.getName())+frame);
             lists.get(4).add(frame+center(repeat(line))+frame);
-            lists.get(5).add(frame+center("Top speed:  " + card.getTopSpeed())+frame);
-            lists.get(6).add(frame+center("Max.length: " + card.getMaxLength())+frame);
-            lists.get(7).add(frame+center("Max.weight:  " + card.getMaxWeight())+frame);
-            lists.get(8).add(frame+center("Food:       " + card.getFood())+frame);
-            lists.get(9).add(frame+center("Life span:  " + card.getLifeSpan())+frame);
+            lists.get(5).add(frame+center("Top speed:  " + card.getTopSpeed()+ " kph   ")+ frame);
+            lists.get(6).add(frame+center("Max.length: " + card.getMaxLength()+ " m     ")+ frame);
+            lists.get(7).add(frame+center("Max.weight:  " + card.getMaxWeight()+ " kg    ")+ frame);
+            lists.get(8).add(frame+center("Food:       " + card.getFood()+ " kg/day")+ frame);
+            lists.get(9).add(frame+center("Life span:  " + card.getLifeSpan()+ " years ")+ frame);
             lists.get(10).add(space+center(repeat(line))+space);
         }
         for(ArrayList<String> list : lists) {
-            strBuilder.append(String.join(doubleSpace, list)+"\n");
+            strBuilder.append(String.join(space+space, list)+"\n");
         }
         return strBuilder.toString();
     }
