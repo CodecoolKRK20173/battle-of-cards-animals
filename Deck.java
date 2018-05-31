@@ -3,12 +3,12 @@ import java.io.*;
 
 public class Deck {
     private ArrayList<Card> cards = new ArrayList<>();
-    private ArrayList<double> speeds = new ArrayList<>();
-    private ArrayList<double> lengths = new ArrayList<>();
-    private ArrayList<double> weights = new ArrayList<>();
-    private ArrayList<double> foods = new ArrayList<>();
-    private ArrayList<double> lifeSpans = new ArrayList<>();
-    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<Double> speeds = new ArrayList<>();
+    private ArrayList<Double> lengths = new ArrayList<>();
+    private ArrayList<Double> weights = new ArrayList<>();
+    private ArrayList<Double> foods = new ArrayList<>();
+    private ArrayList<Double> lifeSpans = new ArrayList<>();
+    private ArrayList<Double> names = new ArrayList<>();
 
     public Deck() {
         getCardsFromFile("CardSpecyfications.csv");
