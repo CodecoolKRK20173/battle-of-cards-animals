@@ -1,9 +1,9 @@
 import java.util.*;
 public class Table {
 
-    private Deck deck = new Deck();
+    private Deck deck;
     private ArrayList<Card> cards;
-    private ArrayList<Player> players;
+    private ArrayList<Player> playersList;
     private ArrayList<Card> cardsOnTheTable;
     private ArrayList<Double> cardsStatistic;
     private final int CARD_WIDTH = 29;
@@ -11,51 +11,29 @@ public class Table {
     private final String SPACE = " ";
     private final String LINE = SPACE+center(repeat("-"))+SPACE;
 
-    public Table() {
-        cards = deck.getAllCards();
-        players = new ArrayList<Player>();
-        cardsOnTheTable = new ArrayList<Card>();
-        cardsStatistic = new ArrayList<Double>();
+    public Table(Players players, Deck deck, RoundCards roundCards) {
+        this.deck = deck;
+        this.cards = deck.getAllCards();
+        this.playersList = players.getPlayers();
+        this.cardsOnTheTable = roundCards.getCards();
+        this.cardsStatistic = new ArrayList<Double>();
     }
-
-
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-
-    public ArrayList<Card> getCardsOnTheTable() {
-        return cardsOnTheTable;
-    }
-
 
     public ArrayList<Double> getCardsStatistic() {
         return cardsStatistic;
     }
 
-
     public void dealCardsOnTheTable() {
         int firstCardIndex = 0;
-        for(int i = 0; i < players.size(); i++) {
-            Card dealedCard = players.get(i).getHand().getCards().remove(firstCardIndex);
+        for(int i = 0; i < playersList.size(); i++) {
+            Card dealedCard = playersList.get(i).getHand().getCards().remove(firstCardIndex);
             cardsOnTheTable.add(dealedCard);
         }
     }
 
-
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
-
-    public void addCardsToTableList(Card card) {
-        cardsOnTheTable.add(card);
-    }
-
-
     public void dealCards() {
         deck.mixCards();
-        Iterator iter = new PlayerIterator(players);
+        Iterator iter = new PlayerIterator(playersList);
         int i = 0;
         while(i < cards.size()) {
             Player player = (Player) iter.next();
@@ -84,7 +62,7 @@ public class Table {
         for(int i=1; i<=11; i++) {
             listsOfCardsParts.add(new ArrayList<String>());
         }
-        for(Player player : players) {
+        for(Player player : playersList) {
             listsOfCardsParts.get(0).add(SPACE+center(player.getName())+SPACE);
             listsOfCardsParts.get(1).add(SPACE+center("Cards: " + player.getHand().getCardsAmount())+SPACE);
         }
