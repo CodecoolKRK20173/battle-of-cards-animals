@@ -2,9 +2,12 @@ import java.util.*;
 public class Table {
 
     private Deck deck = new Deck();
-    private ArrayList<Card> cards;
     private ArrayList<Player> players;
+
+    private ArrayList<Card> cards;
     private ArrayList<Card> cardsOnTheTable;
+    private ArrayList<Card> cardsFromTie;
+
     private ArrayList<Double> cardsStatistic;
     private int cardWidth;
 
@@ -14,10 +17,20 @@ public class Table {
         cards = deck.getAllCards();
         players = new ArrayList<Player>();
         cardsOnTheTable = new ArrayList<Card>();
+        cardsFromTie = new ArrayList<Card>();
         cardsStatistic = new ArrayList<Double>();
         this.cardWidth = 29;
     }
+
+    public void clearLists() {
+        
+        this.cardsStatistic = new ArrayList<>();
+    }
     
+    public void clearStack() {
+        this.cardsFromTie = new ArrayList<>();
+        this.cardsOnTheTable = new ArrayList<>();
+    }
 
     public ArrayList<Player> getPlayers() {
         return players;
@@ -34,10 +47,16 @@ public class Table {
     }
 
 
+    public ArrayList<Card> getCardsFromTie() {
+        return cardsFromTie;
+    }
+
+
     public void dealCardsOnTheTable() {
         int firstCardIndex = 0;
         for(int i = 0; i < players.size(); i++) {
             Card dealedCard = players.get(i).getHand().getCards().remove(firstCardIndex);
+            // Card c = new Card("test", 2d, 2d, 2d, 2d, 2d);
             cardsOnTheTable.add(dealedCard);
         }
     }
