@@ -85,6 +85,8 @@ public class GameHandler {
 
             showListListOfCardsAndListOfStatistic();
 
+            System.out.println(table.tableToString());
+
             // int playerChoice = switchPlayers();
 
             Player roundWinner = getWinnerOfLastRound();

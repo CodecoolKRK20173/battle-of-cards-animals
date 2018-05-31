@@ -7,6 +7,7 @@ public class Card {
     private double maxWeight;
     private double food;
     private double lifeSpan;
+    private int cardWidth;
 
     public Card(String name, double topSpeed, double maxLength, double maxWeight, double food, double lifeSpan) {
         this.name = name;
@@ -15,6 +16,7 @@ public class Card {
         this.maxWeight = maxWeight;
         this.food = food;
         this.lifeSpan = lifeSpan;
+        this.cardWidth = 22;
     }
 
     public String getName() {
@@ -37,7 +39,6 @@ public class Card {
     }
 
     public double getLifeSpan() {
-
         return lifeSpan;
     }
 }
