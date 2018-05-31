@@ -7,12 +7,9 @@ import java.util.Collections;
 import java.util.Random;
 
 
-
-
 public class GameHandler {
 
     private Scanner reader = new Scanner(System.in);
-
     private int choice;
     private int numberOfHumanPlayers;
     private int numberOfPlayers;
@@ -22,13 +19,10 @@ public class GameHandler {
     private int playerFourIndex = 3;
     private String fileName = "about_the_game.txt";
 
-
-
     Display display = new Display();
     Table table = new Table();
     Scanner scanner = new Scanner(System.in);
     Random rand = new Random();
-
 
     public void runApplication() {
 
@@ -52,7 +46,6 @@ public class GameHandler {
         }
     }
 
-
     public void startGame() {
         display.displayGameMode();
         int choice = getChoice();
@@ -74,7 +67,6 @@ public class GameHandler {
         exitGame();
     }
 
-
     public void playGame() {
         table.dealCards();
         setRandomPlayerWinnerStatus();
@@ -93,16 +85,51 @@ public class GameHandler {
 
             System.out.println(table.tableToString());
 
-            int winnerIndex = getIndexOfMaxiumumElement();
+            double maxValue = getMaxiumumElement();
+
+
+            while(playersHaveCards() && checkIfThereIsTie(maxValue)) {
+                
+                addCardsFromTableToStack();
+                table.clearLists();
+
+                table.dealCardsOnTheTable();
+                chooseStatisticToCompare(playerChoice);
+                maxValue = getMaxiumumElement();
+            }
+
+            int winnerIndex = getIndexOfRoundWinner();
 
             switchPlayerWinnerStatus(winnerIndex);
-
             addCardsToPlayersDeck();
 
-            clearListOfCardsAndListOfStatistic();
+            table.clearLists();
+            table.clearStack();
 
         }
     }
+
+    public boolean playersHaveCards() {
+        for(Player p: table.getPlayers()) {
+            if(p.getHand().getCards().size() == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public void showIfThereIsCardInStack() {
+        // if(table.getCardsFromTie().size() > 0) {
+        //     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //     System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
+        // }
+        for(int i = 0; i < table.getCardsFromTie().size(); i++) {
+            System.out.println("Card: " + table.getCardsFromTie().get(i).getName());
+        }
+    }
+
 
 
     public int getWinnerOfLastRoundIndex() {
@@ -116,16 +143,13 @@ public class GameHandler {
 
     }
 
-
     public void setRandomPlayerWinnerStatus() {
         int randomPlayer = rand.nextInt(table.getPlayers().size());
         table.getPlayers().get(randomPlayer).setRoundWinner();
         System.out.println("Player " + table.getPlayers().get(randomPlayer).getName() + " has WINNER STATUS!");
     }
 
-
     public void showWinnerCardStatistic(int winnerIndex) {
-
         System.out.println("CARD STATISTIC\n");
         System.out.println("Top speed: " + table.getCardsOnTheTable().get(winnerIndex).getTopSpeed());
         System.out.println("Max length: " + table.getCardsOnTheTable().get(winnerIndex).getMaxLength());
@@ -136,11 +160,8 @@ public class GameHandler {
 
     }
 
-
     public Player getWinnerOfLastRound() {
-
-        Player winner = table.getPlayers().get(1);
-        
+        Player winner = null;
         for(int i = 0; i < table.getPlayers().size(); i++) {
             if(table.getPlayers().get(i).getRoundWinner()) {
                 winner = table.getPlayers().get(i);
@@ -149,15 +170,12 @@ public class GameHandler {
         return winner;
     }
 
-
     public int getPlayerStatisticChoice(Player roundWinner) {
         int playerChoice = roundWinner.makeMove();
         return playerChoice;
     }
 
-
     public void chooseStatisticToCompare(int playerChoice) {
-        
         if(playerChoice == 1) {
             compareTopSpeed();
         }
@@ -175,20 +193,34 @@ public class GameHandler {
         }     
     }
 
-
-    public int getIndexOfMaxiumumElement() {
-        double maxValue = Collections.max(table.getCardsStatistic());
-        int winnerIndex = table.getCardsStatistic().indexOf(maxValue);
+    public int getIndexOfRoundWinner() {
+        double maxValueIndex = getMaxiumumElement();
+        int winnerIndex = table.getCardsStatistic().indexOf(maxValueIndex);
         return winnerIndex;
     }
 
+    public Double getMaxiumumElement() {
+        double maxValue = Collections.max(table.getCardsStatistic());
+        System.out.println(table.getCardsStatistic().size());
+        return maxValue;
+    }
+
+
+    public boolean checkIfThereIsTie(Double maxValue) {
+        int maxValueOccurences = Collections.frequency(table.getCardsStatistic(), maxValue);
+        if(maxValueOccurences > 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public Player getRoundWinnerPlayer() {
-        int winnerIndex = getIndexOfMaxiumumElement();
+        int winnerIndex = getIndexOfRoundWinner();
         Player winner = table.getPlayers().get(winnerIndex);
         return winner;
     }
-
 
     public void switchPlayerWinnerStatus(int winnerIndex) {
         for(int i = 0; i < table.getPlayers().size(); i++) {
@@ -200,7 +232,6 @@ public class GameHandler {
         }
     }
 
-
     public void addCardsToPlayersDeck() {
         Player player = getRoundWinnerPlayer();
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
@@ -208,19 +239,34 @@ public class GameHandler {
         }
     }
 
+    public void addCardsFromTieCardsListToPlayersDeck() {
+        Player player = getRoundWinnerPlayer();
+        for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
+            player.getHand().addCardToHand(table.getCardsFromTie().get(i));
+        }
+    }
+
+    public void addCardsFromTableToStack() {
+        table.getCardsFromTie().addAll(table.getCardsOnTheTable());
+        table.getCardsOnTheTable().clear();
+    }
 
     public void clearListOfCardsAndListOfStatistic() {
         table.getCardsOnTheTable().clear();
         table.getCardsStatistic().clear();
+        table.getCardsFromTie().clear();
+    }
+
+    public void clearListOfStatistic() {
+        table.getCardsOnTheTable().clear();
+        table.getCardsStatistic().clear();
     }
     
-
     public void compareTopSpeed() {
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
             table.getCardsStatistic().add(table.getCardsOnTheTable().get(i).getTopSpeed());
         }
     }
-
 
     public void compareMaxLength() {
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
@@ -228,13 +274,11 @@ public class GameHandler {
         }
     }
 
-
     public void compareMaxWeigth() {
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
             table.getCardsStatistic().add(table.getCardsOnTheTable().get(i).getMaxWeigth());
         }
     }
-
 
     public void compareFood() {
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
@@ -242,13 +286,11 @@ public class GameHandler {
         }
     }
 
-
     public void compareLifeSpan() {
         for(int i = 0; i < table.getCardsOnTheTable().size(); i++) {
             table.getCardsStatistic().add(table.getCardsOnTheTable().get(i).getLifeSpan());
         }
     }
-
 
     private int chooseNumberOfPlayers() {
         System.out.print("Please choose number of players - 2, 3 or 4: ");
@@ -256,13 +298,11 @@ public class GameHandler {
         return numberOfPlayers;
     }
 
-
     private void createPlayerVsPlayerMode(int numberOfPlayers) {
         for(int i = 0; i < numberOfPlayers; i++) {
             table.addPlayer(createHumanPlayer());
         }
     }
-
 
     private void createPlayerVsComputerMode(int numberOfPlayers) {
         int numberOfHumanPlayers = 1;
@@ -272,13 +312,11 @@ public class GameHandler {
         }
     }
 
-
     private void createComputerVsComputerMode(int numberOfPlayers) {
         for(int i = 0; i < numberOfPlayers; i++) {
             table.addPlayer(createComputerPlayer("Computer " + (i + 1)));
         }
     }
-
 
     public Player createHumanPlayer() {
         System.out.print("Please enter player name: ");
@@ -286,7 +324,6 @@ public class GameHandler {
         System.out.println("Player " + playerName + " created!");
         return new HumanPlayer(playerName);
     }
-
 
     public Player createComputerPlayer(String computerName) {
         display.displayGameLevel();
@@ -302,9 +339,7 @@ public class GameHandler {
         }
     }
 
-
     public boolean gameOver() {
-        
         ArrayList<Player> players = table.getPlayers();
         if(players.size() == 2) {
             return gameOverWithTwoPlayers();
@@ -321,7 +356,6 @@ public class GameHandler {
         
     }
 
-
     public boolean gameOverWithTwoPlayers () {
         ArrayList<Player> players = table.getPlayers();
         if(players.get(playerOneIndex).getHand().getCards().size() == 0 || 
@@ -332,7 +366,6 @@ public class GameHandler {
             return false;
         }
     }
-
 
     public boolean gameOverWithThreePlayers() {
         ArrayList<Player> players = table.getPlayers();
@@ -345,7 +378,6 @@ public class GameHandler {
             return false;
         }
     }
-
 
     public boolean gameOverWithFourPlayers() {
         ArrayList<Player> players = table.getPlayers();
@@ -360,11 +392,9 @@ public class GameHandler {
         }
     }
 
-
     public void exitGame() {
         System.exit(0);
     }
-
 
     private int getChoice() {
         boolean stopWhile = true;
@@ -386,6 +416,5 @@ public class GameHandler {
         }
         return option;
     }
-
 
 }
