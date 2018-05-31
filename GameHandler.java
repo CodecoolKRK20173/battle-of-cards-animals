@@ -26,7 +26,6 @@ public class GameHandler {
         boolean quit = false;
         while(!quit) {
             display.displayMainMenu();
-            System.out.print("Please enter your choice: ");
             int choice = getChoice();
             switch(choice) {
                 case 1:
@@ -221,15 +220,22 @@ public class GameHandler {
         for(GameMode value : values) {
             System.out.println(value);
         }
-        System.out.println("Write number: ");
         int choice = getChoice();
         return choice;
     }
 
     private int chooseNumberOfPlayers() {
-        System.out.print("Please choose number of players - 2, 3 or 4: ");
-        int numberOfPlayers = getChoice();
-        return numberOfPlayers;
+        boolean getNum = false;
+        int num = 0;
+        while(!getNum) {
+            System.out.print("Please choose number of players - 2, 3 or 4: ");
+            String choice = scanner.nextLine();
+            if(choice.equals("2") || choice.equals("3") || choice.equals("4")) {
+                num = Integer.valueOf(choice);
+                getNum = true;
+            }
+        }
+        return num;
     }
 
     private void createPlayerVsPlayerMode(int numberOfPlayers) {
@@ -284,25 +290,19 @@ public class GameHandler {
     }
 
     private int getChoice() {
-        boolean stopWhile = true;
-        int option = 0;
-        while(stopWhile) {
-            this.reader = new Scanner(System.in);
-            try {
-                option = reader.nextInt();
-                if(option >= 0 && option <= 6) {
-                    stopWhile = false;
-                }
-                else {
-                    display.displayMainMenu();
-                }
-            }
-            catch (InputMismatchException e) {
-                e.printStackTrace();
+        boolean getNum = false;
+        int num = 0;
+        while(!getNum) {
+            System.out.print("Please write 1, 2 or 3:");
+            String choice = scanner.nextLine();
+            if(choice.equals("1") || choice.equals("2") || choice.equals("3")) {
+                num = Integer.valueOf(choice);
+                getNum = true;
             }
         }
-        return option;
+        return num;
     }
+
 
 
 
