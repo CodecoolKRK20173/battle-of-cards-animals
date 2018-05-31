@@ -6,18 +6,18 @@ public class Table {
     private ArrayList<Player> players;
     private ArrayList<Card> cardsOnTheTable;
     private ArrayList<Double> cardsStatistic;
-    private int cardWidth;
-
-
+    private final int CARD_WIDTH = 29;
+    private final String FRAME = "|";
+    private final String SPACE = " ";
+    private final String LINE = SPACE+center(repeat("-"))+SPACE;
 
     public Table() {
         cards = deck.getAllCards();
         players = new ArrayList<Player>();
         cardsOnTheTable = new ArrayList<Card>();
         cardsStatistic = new ArrayList<Double>();
-        this.cardWidth = 29;
     }
-    
+
 
     public ArrayList<Player> getPlayers() {
         return players;
@@ -64,46 +64,57 @@ public class Table {
         }
     }
 
+    public String cardToString(Card card) {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append(LINE+"\n");
+        strBuilder.append(FRAME+center(card.getName())+FRAME+"\n");
+        strBuilder.append(LINE+"\n");
+        strBuilder.append(FRAME+center("Top speed:  " + card.getTopSpeed()+ " kph   ")+ FRAME+"\n");
+        strBuilder.append(FRAME+center("Max.length: " + card.getMaxLength()+ " m     ")+ FRAME+"\n");
+        strBuilder.append(FRAME+center("Max.weight:  " + card.getMaxWeight()+ " kg    ")+ FRAME+"\n");
+        strBuilder.append(FRAME+center("Food:       " + card.getFood()+ " kg/day")+ FRAME+"\n");
+        strBuilder.append(FRAME+center("Life span:  " + card.getLifeSpan()+ " years ")+ FRAME+"\n");
+        strBuilder.append(LINE+"\n");
+        return strBuilder.toString();
+    }
+
     public String tableToString() {
         StringBuilder strBuilder = new StringBuilder();
         List<ArrayList<String>> listsOfCardsParts = new ArrayList<ArrayList<String>>();
-        String frame = "|";
-        String line = "-";
-        String space = " ";
         for(int i=1; i<=11; i++) {
             listsOfCardsParts.add(new ArrayList<String>());
         }
         for(Player player : players) {
-            listsOfCardsParts.get(0).add(space+center(player.getName())+space);
-            listsOfCardsParts.get(1).add(space+center("Cards: " + player.getHand().getCardsAmount())+space);
+            listsOfCardsParts.get(0).add(SPACE+center(player.getName())+SPACE);
+            listsOfCardsParts.get(1).add(SPACE+center("Cards: " + player.getHand().getCardsAmount())+SPACE);
         }
         for(Card card : cardsOnTheTable) {
-            listsOfCardsParts.get(2).add(space+center(repeat(line))+space);
-            listsOfCardsParts.get(3).add(frame+center(card.getName())+frame);
-            listsOfCardsParts.get(4).add(frame+center(repeat(line))+frame);
-            listsOfCardsParts.get(5).add(frame+center("Top speed:  " + card.getTopSpeed()+ " kph   ")+ frame);
-            listsOfCardsParts.get(6).add(frame+center("Max.length: " + card.getMaxLength()+ " m     ")+ frame);
-            listsOfCardsParts.get(7).add(frame+center("Max.weight:  " + card.getMaxWeigth()+ " kg    ")+ frame);
-            listsOfCardsParts.get(8).add(frame+center("Food:       " + card.getFood()+ " kg/day")+ frame);
-            listsOfCardsParts.get(9).add(frame+center("Life span:  " + card.getLifeSpan()+ " years ")+ frame);
-            listsOfCardsParts.get(10).add(space+center(repeat(line))+space);
+            listsOfCardsParts.get(2).add(LINE);
+            listsOfCardsParts.get(3).add(FRAME+center(card.getName())+FRAME);
+            listsOfCardsParts.get(4).add(LINE);
+            listsOfCardsParts.get(5).add(FRAME+center("Top speed:  " + card.getTopSpeed()+ " kph   ")+ FRAME);
+            listsOfCardsParts.get(6).add(FRAME+center("Max.length: " + card.getMaxLength()+ " m     ")+ FRAME);
+            listsOfCardsParts.get(7).add(FRAME+center("Max.weight:  " + card.getMaxWeight()+ " kg    ")+ FRAME);
+            listsOfCardsParts.get(8).add(FRAME+center("Food:       " + card.getFood()+ " kg/day")+ FRAME);
+            listsOfCardsParts.get(9).add(FRAME+center("Life span:  " + card.getLifeSpan()+ " years ")+ FRAME);
+            listsOfCardsParts.get(10).add(LINE);
         }
         for(ArrayList<String> list : listsOfCardsParts) {
-            strBuilder.append(String.join(space+space, list)+"\n");
+            strBuilder.append(String.join(SPACE+SPACE, list)+"\n");
         }
         return strBuilder.toString();
     }
 
     public String center(String string) {
-        int padSize = cardWidth - string.length();
+        int padSize = CARD_WIDTH - string.length();
         int padStart = string.length() + padSize / 2;
         string = String.format("%" + padStart + "s", string);
-        string = String.format("%-" + cardWidth  + "s", string);
+        string = String.format("%-" + CARD_WIDTH  + "s", string);
 
         return string;
     }
 
     public String repeat(String string) {
-        return new String(new char[cardWidth]).replace("\0", string);
+        return new String(new char[CARD_WIDTH]).replace("\0", string);
     }
 }
