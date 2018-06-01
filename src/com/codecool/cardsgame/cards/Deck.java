@@ -16,7 +16,7 @@ public class Deck {
     private ArrayList<String> names = new ArrayList<>();
 
     public Deck() {
-        getCardsFromFile("/home/damian/Desktop/GitHub/battle-of-cards-animals/src/com/codecool/cardsgame/cards/CardSpecyfications.csv");
+        getCardsFromFile("/home/ewelina/workspace/java/cards/battle-of-cards-animals/src/com/codecool/cardsgame/cards/CardSpecyfications.csv");
     }
 
     public void getCardsFromFile(String fileName) {

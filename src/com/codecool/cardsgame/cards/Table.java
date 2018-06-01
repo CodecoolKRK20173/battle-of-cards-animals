@@ -13,12 +13,8 @@ public class Table {
     private RoundCards roundCards;
     private ArrayList<Card> cards;
     private ArrayList<Player> playersList;
-
-    private ArrayList<Player> players;
-
     private ArrayList<Card> cardsOnTheTable;
     private ArrayList<Card> cardsFromTie;
-
     private ArrayList<Double> cardsStatistic;
     private final int CARD_WIDTH = 29;
     private final String FRAME = "|";
@@ -39,18 +35,17 @@ public class Table {
         return roundCards;
     }
 
-
     public void clearLists() {
         this.cardsStatistic = new ArrayList<>();
     }
-    
+
     public void clearStack() {
         this.cardsFromTie = new ArrayList<>();
         this.cardsOnTheTable = new ArrayList<>();
     }
 
     public ArrayList<Player> getPlayers() {
-        return players;
+        return playersList;
     }
 
 
@@ -67,7 +62,6 @@ public class Table {
     public ArrayList<Card> getCardsFromTie() {
         return cardsFromTie;
     }
-
 
     public void dealCardsOnTheTable() {
         int firstCardIndex = 0;

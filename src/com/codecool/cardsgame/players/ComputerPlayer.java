@@ -5,8 +5,6 @@ import com.codecool.cardsgame.game.*;
 import com.codecool.cardsgame.iterator.*;
 import java.util.*;
 
-
-
 public class ComputerPlayer extends Player {
 
     Random rand = new Random();
@@ -15,8 +13,6 @@ public class ComputerPlayer extends Player {
         super(name);
     }
 
-
-    @Override
     public int makeMove() {
         System.out.println("Player " + getName() + " make move!");
         int choiceShift = 1;

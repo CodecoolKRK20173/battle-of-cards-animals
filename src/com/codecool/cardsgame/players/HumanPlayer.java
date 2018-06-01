@@ -15,7 +15,6 @@ public class HumanPlayer extends Player {
         super(name);
     }
 
-    @Override
     public int makeMove() {
         System.out.println("Player " + getName() + " make move!");
         System.out.println("Choose statistic to compare: ");
